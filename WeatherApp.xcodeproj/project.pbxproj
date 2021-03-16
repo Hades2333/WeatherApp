@@ -13,6 +13,11 @@
 		140075B1260088A100842D93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140075AF260088A100842D93 /* LaunchScreen.storyboard */; };
 		140075C426008BD700842D93 /* UIView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075C326008BD700842D93 /* UIView+Ex.swift */; };
 		140075C726008BF100842D93 /* UIStackView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075C626008BF100842D93 /* UIStackView+Ex.swift */; };
+		140075CA26008C6900842D93 /* ForecastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075C926008C6900842D93 /* ForecastPresenter.swift */; };
+		140075CD26008C8C00842D93 /* TodayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075CC26008C8C00842D93 /* TodayPresenter.swift */; };
+		140075D026008CA100842D93 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075CF26008CA100842D93 /* WeatherModel.swift */; };
+		140075D426008CC900842D93 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075D326008CC900842D93 /* ForecastViewController.swift */; };
+		140075D726008CFD00842D93 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075D626008CFD00842D93 /* TodayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		140075B2260088A100842D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		140075C326008BD700842D93 /* UIView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ex.swift"; sourceTree = "<group>"; };
 		140075C626008BF100842D93 /* UIStackView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ex.swift"; sourceTree = "<group>"; };
+		140075C926008C6900842D93 /* ForecastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPresenter.swift; sourceTree = "<group>"; };
+		140075CC26008C8C00842D93 /* TodayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPresenter.swift; sourceTree = "<group>"; };
+		140075CF26008CA100842D93 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		140075D326008CC900842D93 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
+		140075D626008CFD00842D93 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +88,8 @@
 		140075BE26008B1400842D93 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				140075CC26008C8C00842D93 /* TodayPresenter.swift */,
+				140075C926008C6900842D93 /* ForecastPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -85,6 +97,7 @@
 		140075BF26008B1E00842D93 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				140075CF26008CA100842D93 /* WeatherModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -92,6 +105,8 @@
 		140075C026008B2500842D93 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				140075D626008CFD00842D93 /* TodayViewController.swift */,
+				140075D326008CC900842D93 /* ForecastViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,8 +199,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				140075CD26008C8C00842D93 /* TodayPresenter.swift in Sources */,
 				140075A92600889D00842D93 /* ViewController.swift in Sources */,
+				140075D726008CFD00842D93 /* TodayViewController.swift in Sources */,
 				140075A52600889D00842D93 /* AppDelegate.swift in Sources */,
+				140075D026008CA100842D93 /* WeatherModel.swift in Sources */,
+				140075CA26008C6900842D93 /* ForecastPresenter.swift in Sources */,
+				140075D426008CC900842D93 /* ForecastViewController.swift in Sources */,
 				140075C726008BF100842D93 /* UIStackView+Ex.swift in Sources */,
 				140075C426008BD700842D93 /* UIView+Ex.swift in Sources */,
 			);
