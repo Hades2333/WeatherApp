@@ -47,7 +47,6 @@ class TodayViewController: UIViewController {
         stack.axis = .vertical
         stack.alignment = .center
         stack.distribution = .equalCentering
-        stack.backgroundColor = .red
         return stack
     }()
 
@@ -71,7 +70,6 @@ class TodayViewController: UIViewController {
         for _ in 0...1 {
             let stack = UIStackView()
             stack.axis = .horizontal
-            stack.backgroundColor = .systemPink
             stack.alignment = .fill
             stack.distribution = .fillEqually
             stacks.append(stack)
@@ -86,7 +84,6 @@ class TodayViewController: UIViewController {
             stack.axis = .vertical
             stack.alignment = .center
             stack.distribution = .equalCentering
-            stack.backgroundColor = .magenta
             stack.spacing = 10
             stacks.append(stack)
         }

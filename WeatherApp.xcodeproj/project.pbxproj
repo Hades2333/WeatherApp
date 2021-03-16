@@ -21,6 +21,7 @@
 		140075DE26008DB900842D93 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075DD26008DB900842D93 /* ModuleBuilder.swift */; };
 		140075E426008F8C00842D93 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 140075E326008F8C00842D93 /* SnapKit */; };
 		140075E72600A86700842D93 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075E62600A86700842D93 /* LocationManager.swift */; };
+		140075EE2600B68300842D93 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075ED2600B68300842D93 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		140075DA26008D9600842D93 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		140075DD26008DB900842D93 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		140075E62600A86700842D93 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		140075ED2600B68300842D93 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			children = (
 				140075D626008CFD00842D93 /* TodayViewController.swift */,
 				140075D326008CC900842D93 /* ForecastViewController.swift */,
+				140075ED2600B68300842D93 /* CustomTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				140075E72600A86700842D93 /* LocationManager.swift in Sources */,
 				140075DE26008DB900842D93 /* ModuleBuilder.swift in Sources */,
 				140075A52600889D00842D93 /* AppDelegate.swift in Sources */,
+				140075EE2600B68300842D93 /* CustomTableViewCell.swift in Sources */,
 				140075D026008CA100842D93 /* WeatherModel.swift in Sources */,
 				140075CA26008C6900842D93 /* ForecastPresenter.swift in Sources */,
 				140075D426008CC900842D93 /* ForecastViewController.swift in Sources */,

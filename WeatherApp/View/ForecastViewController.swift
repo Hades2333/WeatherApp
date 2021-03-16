@@ -26,7 +26,9 @@ class ForecastViewController: UIViewController {
 
     private let table: UITableView = {
         let table = UITableView()
-        table.backgroundColor = .orange
+        table.register(CustomTableViewCell.self,
+                       forCellReuseIdentifier: CustomTableViewCell.identifier)
+        table.backgroundColor = .secondarySystemBackground
         return table
     }()
 
@@ -36,6 +38,12 @@ class ForecastViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         initViews()
+        configureTableView()
+    }
+
+    private func configureTableView() {
+        table.dataSource = self
+        table.delegate = self
     }
 
     private func initViews() {
@@ -63,8 +71,20 @@ class ForecastViewController: UIViewController {
     }
 }
 
+extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        5
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as? CustomTableViewCell else {
+            fatalError("custom cell not found")
+        }
+        return cell
+    }
+}
+
 extension ForecastViewController: ForecastViewProtocol {
 
 }
-
 
