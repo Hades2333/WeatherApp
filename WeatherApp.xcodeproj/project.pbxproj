@@ -20,6 +20,7 @@
 		140075DB26008D9600842D93 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075DA26008D9600842D93 /* MainTabBarController.swift */; };
 		140075DE26008DB900842D93 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075DD26008DB900842D93 /* ModuleBuilder.swift */; };
 		140075E426008F8C00842D93 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 140075E326008F8C00842D93 /* SnapKit */; };
+		140075E72600A86700842D93 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075E62600A86700842D93 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		140075D626008CFD00842D93 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		140075DA26008D9600842D93 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		140075DD26008DB900842D93 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		140075E62600A86700842D93 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				140075A42600889D00842D93 /* AppDelegate.swift */,
 				140075DD26008DB900842D93 /* ModuleBuilder.swift */,
 				140075DA26008D9600842D93 /* MainTabBarController.swift */,
+				140075E62600A86700842D93 /* LocationManager.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				140075CD26008C8C00842D93 /* TodayPresenter.swift in Sources */,
 				140075DB26008D9600842D93 /* MainTabBarController.swift in Sources */,
 				140075D726008CFD00842D93 /* TodayViewController.swift in Sources */,
+				140075E72600A86700842D93 /* LocationManager.swift in Sources */,
 				140075DE26008DB900842D93 /* ModuleBuilder.swift in Sources */,
 				140075A52600889D00842D93 /* AppDelegate.swift in Sources */,
 				140075D026008CA100842D93 /* WeatherModel.swift in Sources */,
