@@ -46,7 +46,6 @@ class TodayViewController: UIViewController {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .center
-        stack.distribution = .equalCentering
         return stack
     }()
 
@@ -119,20 +118,23 @@ class TodayViewController: UIViewController {
 
     private let bigImage: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .yellow
+        view.image = UIImage(systemName: "sun.max")
+        view.tintColor = .systemYellow
         return view
     }()
 
     private let placeLabel: UILabel = {
         let label = UILabel()
-        label.text = "London"
+        label.text = "London, UK"
         label.textAlignment = .center
         return label
     }()
 
     private let temperatureLabel: UILabel = {
         let label = UILabel()
-        label.text = "20 градусов"
+        label.text = "22°С | Sunny"
+        label.textColor = .systemBlue
+        label.font = .systemFont(ofSize: 15)
         label.textAlignment = .center
         return label
     }()
@@ -233,18 +235,21 @@ class TodayViewController: UIViewController {
         }
 
         bigImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(myOffset*2)
-            make.bottom.equalTo(placeLabel.snp.top).offset(-myOffset*2)
-            make.width.equalTo(bigImage.snp.height)
+            make.top.equalTo(topStack).inset(myOffset*2)
+            make.centerX.equalTo(topStack)
+            make.width.height.equalTo(topStack.snp.height).multipliedBy(0.5)
+            //make.width.equalTo(bigImage.snp.height)
         }
         placeLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(temperatureLabel.snp.top).offset(-myOffset)
-            make.width.equalToSuperview()
+            make.top.equalTo(bigImage.snp.bottom).offset(myOffset)
+            make.height.equalTo(20)
+            make.width.equalTo(topStack)
         }
         temperatureLabel.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-
-            make.bottom.equalTo(topStack.snp.bottom).inset(myOffset*2)
+            make.top.equalTo(placeLabel.snp.bottom).offset(myOffset)
+            make.bottom.equalTo(topStack.snp.bottom).offset(myOffset*2)
+            make.height.equalTo(placeLabel.snp.height).multipliedBy(1.5)
+            make.width.equalTo(topStack)
         }
 
 

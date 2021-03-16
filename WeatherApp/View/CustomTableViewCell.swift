@@ -15,14 +15,15 @@ class CustomTableViewCell: UITableViewCell {
     //MARK: - GUI Variables
     private let weatherImage: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .red
+        view.image = UIImage(systemName: "sun.max")
+        view.tintColor = .systemYellow
         return view
     }()
 
     private let timeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "21.00"
+        label.text = "21:00"
         return label
     }()
 
@@ -36,33 +37,33 @@ class CustomTableViewCell: UITableViewCell {
     private let temperatureLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "23"
+        label.textAlignment = .center
+        label.textColor = .systemBlue
+        label.font = .boldSystemFont(ofSize: 40)
+        label.text = "23°"
         return label
-    }()
-
-    private let horizontalStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        //stack.alignment = .fill
-        //stack.distribution = .fillEqually
-        stack.backgroundColor = .secondarySystemBackground
-        return stack
     }()
 
     private let verticalStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
+        stack.distribution = .fillProportionally
         return stack
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(horizontalStack)
-        horizontalStack.addArrangedSubviews([weatherImage,
-                                             verticalStack,
-                                             temperatureLabel])
+
+        //contentView.backgroundColor = .secondarySystemBackground
+
+        contentView.snp.makeConstraints { make in
+            make.height.equalTo(contentView.snp.width).multipliedBy(0.25)
+        }
+
+        contentView.addSubviews([weatherImage,
+                                 verticalStack,
+                                 temperatureLabel])
         verticalStack.addArrangedSubviews([timeLabel, conditionLabel])
-        selectionStyle = .blue
     }
 
     required init?(coder: NSCoder) {
@@ -71,32 +72,20 @@ class CustomTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        configureConstraints()
-    }
 
-    private func configureConstraints() {
-        horizontalStack.snp.makeConstraints { make in
-            make.edges.equalTo(contentView)
-        }
+        let imageSize = contentView.frame.size.width/4
 
-        weatherImage.snp.makeConstraints { make in
-            make.width.height.equalTo(70)
-            make.top.left.bottom.equalToSuperview()
-        }
-
-        verticalStack.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.left.equalTo(weatherImage.snp.right)
-            make.right.equalTo(temperatureLabel.snp.left)
-        }
-
-        temperatureLabel.snp.makeConstraints { make in
-            make.top.right.bottom.equalToSuperview()
-            make.width.height.equalTo(weatherImage)
-        }
-    }
-
-    public func configure() {
-
+        weatherImage.frame = CGRect(x: 10,
+                                    y: 10,
+                                    width: imageSize-20,
+                                    height: imageSize-20)
+        verticalStack.frame = CGRect(x: imageSize+15,
+                                     y: 10,
+                                     width: imageSize*2,
+                                     height: imageSize-20)
+        temperatureLabel.frame = CGRect(x: imageSize*3,
+                                        y: 0,
+                                        width: imageSize,
+                                        height: imageSize)
     }
 }
