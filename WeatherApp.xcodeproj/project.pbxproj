@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		140075A52600889D00842D93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075A42600889D00842D93 /* AppDelegate.swift */; };
-		140075A92600889D00842D93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075A82600889D00842D93 /* ViewController.swift */; };
 		140075AE260088A100842D93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 140075AD260088A100842D93 /* Assets.xcassets */; };
 		140075B1260088A100842D93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140075AF260088A100842D93 /* LaunchScreen.storyboard */; };
 		140075C426008BD700842D93 /* UIView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075C326008BD700842D93 /* UIView+Ex.swift */; };
@@ -18,12 +17,13 @@
 		140075D026008CA100842D93 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075CF26008CA100842D93 /* WeatherModel.swift */; };
 		140075D426008CC900842D93 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075D326008CC900842D93 /* ForecastViewController.swift */; };
 		140075D726008CFD00842D93 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075D626008CFD00842D93 /* TodayViewController.swift */; };
+		140075DB26008D9600842D93 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075DA26008D9600842D93 /* MainTabBarController.swift */; };
+		140075DE26008DB900842D93 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075DD26008DB900842D93 /* ModuleBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		140075A12600889D00842D93 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		140075A42600889D00842D93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		140075A82600889D00842D93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		140075AD260088A100842D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		140075B0260088A100842D93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		140075B2260088A100842D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,6 +34,8 @@
 		140075CF26008CA100842D93 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		140075D326008CC900842D93 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		140075D626008CFD00842D93 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		140075DA26008D9600842D93 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		140075DD26008DB900842D93 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +118,8 @@
 			children = (
 				140075C226008BC500842D93 /* Extensions */,
 				140075A42600889D00842D93 /* AppDelegate.swift */,
-				140075A82600889D00842D93 /* ViewController.swift */,
+				140075DD26008DB900842D93 /* ModuleBuilder.swift */,
+				140075DA26008D9600842D93 /* MainTabBarController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -200,8 +203,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				140075CD26008C8C00842D93 /* TodayPresenter.swift in Sources */,
-				140075A92600889D00842D93 /* ViewController.swift in Sources */,
+				140075DB26008D9600842D93 /* MainTabBarController.swift in Sources */,
 				140075D726008CFD00842D93 /* TodayViewController.swift in Sources */,
+				140075DE26008DB900842D93 /* ModuleBuilder.swift in Sources */,
 				140075A52600889D00842D93 /* AppDelegate.swift in Sources */,
 				140075D026008CA100842D93 /* WeatherModel.swift in Sources */,
 				140075CA26008C6900842D93 /* ForecastPresenter.swift in Sources */,

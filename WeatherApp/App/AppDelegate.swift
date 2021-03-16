@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if let window = self.window {
 
-            let vc = ViewController()
-            window.rootViewController = vc
+            let tabBarVC = MainTabBar()
+            window.rootViewController = tabBarVC
             window.makeKeyAndVisible()
         }
         return true
