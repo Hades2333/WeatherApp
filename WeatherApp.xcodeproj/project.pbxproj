@@ -11,6 +11,8 @@
 		140075A92600889D00842D93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075A82600889D00842D93 /* ViewController.swift */; };
 		140075AE260088A100842D93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 140075AD260088A100842D93 /* Assets.xcassets */; };
 		140075B1260088A100842D93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140075AF260088A100842D93 /* LaunchScreen.storyboard */; };
+		140075C426008BD700842D93 /* UIView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075C326008BD700842D93 /* UIView+Ex.swift */; };
+		140075C726008BF100842D93 /* UIStackView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075C626008BF100842D93 /* UIStackView+Ex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		140075AD260088A100842D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		140075B0260088A100842D93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		140075B2260088A100842D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		140075C326008BD700842D93 /* UIView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ex.swift"; sourceTree = "<group>"; };
+		140075C626008BF100842D93 /* UIStackView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,10 +99,20 @@
 		140075C126008B2900842D93 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				140075C226008BC500842D93 /* Extensions */,
 				140075A42600889D00842D93 /* AppDelegate.swift */,
 				140075A82600889D00842D93 /* ViewController.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		140075C226008BC500842D93 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				140075C326008BD700842D93 /* UIView+Ex.swift */,
+				140075C626008BF100842D93 /* UIStackView+Ex.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +186,8 @@
 			files = (
 				140075A92600889D00842D93 /* ViewController.swift in Sources */,
 				140075A52600889D00842D93 /* AppDelegate.swift in Sources */,
+				140075C726008BF100842D93 /* UIStackView+Ex.swift in Sources */,
+				140075C426008BD700842D93 /* UIView+Ex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
