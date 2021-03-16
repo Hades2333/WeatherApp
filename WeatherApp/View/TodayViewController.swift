@@ -134,9 +134,27 @@ class TodayViewController: UIViewController {
         let label = UILabel()
         label.text = "22°С | Sunny"
         label.textColor = .systemBlue
-        label.font = .systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
         return label
+    }()
+
+    private let stackForOnline: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.spacing = 30
+        return stack
+    }()
+
+    private let online: [UIImageView] = {
+        var views = [UIImageView]()
+        let view1 = UIImageView()
+        view1.image = UIImage(named: "online")
+        views.append(view1)
+        let view2 = UIImageView()
+        views.append(view2)
+        return views
     }()
 
     var presenter: TodayViewPresenterProtocol!
@@ -150,7 +168,8 @@ class TodayViewController: UIViewController {
     private func initViews() {
         view.addSubviews([headerLabel, colorLine, mainStack])
         mainStack.addArrangedSubviews([topStack, midStack, shareButton])
-        topStack.addArrangedSubviews([bigImage, placeLabel, temperatureLabel])
+        topStack.addArrangedSubviews([bigImage, stackForOnline, temperatureLabel])
+        stackForOnline.addArrangedSubviews([online[0], placeLabel, online[1]])
         midStack.addArrangedSubviews([grayLine[0], secondMidStack, grayLine[1]])
         secondMidStack.addArrangedSubviews([horizontalMidStack[0], horizontalMidStack[1]])
         horizontalMidStack[0].addArrangedSubviews([verticalStackWithImageAndLabel[0],
@@ -238,17 +257,24 @@ class TodayViewController: UIViewController {
             make.top.equalTo(topStack).inset(myOffset*2)
             make.centerX.equalTo(topStack)
             make.width.height.equalTo(topStack.snp.height).multipliedBy(0.5)
-            //make.width.equalTo(bigImage.snp.height)
         }
-        placeLabel.snp.makeConstraints { make in
+        stackForOnline.snp.makeConstraints { make in
+
             make.top.equalTo(bigImage.snp.bottom).offset(myOffset)
-            make.height.equalTo(20)
-            make.width.equalTo(topStack)
+            make.height.equalTo(myOffset*4)
         }
+
+        online[0].snp.makeConstraints { make in
+            make.width.height.equalTo(15)
+        }
+
+        online[1].snp.makeConstraints { make in
+            make.width.height.equalTo(15)
+        }
+
         temperatureLabel.snp.makeConstraints { make in
-            make.top.equalTo(placeLabel.snp.bottom).offset(myOffset)
-            make.bottom.equalTo(topStack.snp.bottom).offset(myOffset*2)
-            make.height.equalTo(placeLabel.snp.height).multipliedBy(1.5)
+            make.top.equalTo(placeLabel.snp.bottom)
+            make.bottom.equalTo(topStack.snp.bottom).inset(50)
             make.width.equalTo(topStack)
         }
 
