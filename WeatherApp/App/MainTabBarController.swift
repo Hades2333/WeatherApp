@@ -38,9 +38,6 @@ class MainTabBar: UITabBarController, CLLocationManagerDelegate {
             currentLocation = locations.first
             locationManager.stopUpdatingLocation()
             requestWeatherForLocation()
-
-
-            print("мои координаты \(String(describing: currentLocation?.coordinate.latitude)) \(String(describing: currentLocation?.coordinate.longitude))")
         }
     }
 

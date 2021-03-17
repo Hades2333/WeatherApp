@@ -103,7 +103,6 @@ class TodayViewController: UIViewController {
         var labels = [UILabel]()
         for _ in 0...4 {
             let label = UILabel()
-            label.text = "ahah"
             labels.append(label)
         }
         return labels

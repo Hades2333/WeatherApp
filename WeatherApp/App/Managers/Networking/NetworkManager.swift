@@ -36,10 +36,8 @@ class NetworkManager {
             errorHandler(.incorrectUrl)
             return
         }
-        //print(fullUrl)
 
         let request = URLRequest(url: fullUrl)
-        print(fullUrl)
         let dataTask = self.session.dataTask(with: request) { data, response, error in
             if let error: Error = error {
 
