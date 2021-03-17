@@ -109,6 +109,7 @@ enum MainEnum: String, Codable {
     case clear = "Clear"
     case clouds = "Clouds"
     case rain = "Rain"
+    case snow = "Snow"
 }
 
 // MARK: - Wind
@@ -116,3 +117,5 @@ struct Wind: Codable {
     let speed: Double
     let deg: Int
 }
+
+

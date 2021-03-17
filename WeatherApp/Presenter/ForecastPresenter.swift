@@ -8,6 +8,7 @@
 import Foundation
 
 protocol ForecastViewProtocol: class {
+    func configureView(with model: Welcome)
 }
 
 protocol ForecastViewPresenterProtocol: class {

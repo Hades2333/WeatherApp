@@ -13,6 +13,7 @@ class MainTabBar: UITabBarController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var todayPresenter: TodayPresenter?
+    var forecastPresenter: ForecastPresenter?
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -51,14 +52,14 @@ class MainTabBar: UITabBarController, CLLocationManagerDelegate {
 
         NetworkManager.shared.request(lat: lat, long: long,
                                       successHandler: { [weak self] (model: Welcome) in
-
-            guard let self = self else { return }
-            self.todayPresenter?.view.configureView(with: model)
-        },
-        errorHandler: { (error: NetworkError) in
-            Swift.debugPrint(error)
-        })
-
+                                        
+                                        guard let self = self else { return }
+                                        self.todayPresenter?.view.configureView(with: model)
+                                        self.forecastPresenter?.view.configureView(with: model)
+                                      },
+                                      errorHandler: { (error: NetworkError) in
+                                        Swift.debugPrint(error)
+                                      })
     }
 
     //MARK: - Methods
@@ -69,7 +70,9 @@ class MainTabBar: UITabBarController, CLLocationManagerDelegate {
         todayVC.tabBarItem = UITabBarItem(title: "Today",
                                           image: UIImage(systemName: "sun.max"),
                                           selectedImage: UIImage(systemName: "sun.max.fill"))
-        let forecastVC = ModuleBuilder.createForecastModule()
+        let forecastResult = ModuleBuilder.createForecastModule()
+        let forecastVC = forecastResult.0
+        forecastPresenter = forecastResult.1
         forecastVC.tabBarItem = UITabBarItem(title: "Forecast",
                                              image: UIImage(systemName: "cloud.moon.bolt"),
                                              selectedImage: UIImage(systemName: "cloud.moon.bolt.fill"))

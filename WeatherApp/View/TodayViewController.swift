@@ -282,7 +282,9 @@ class TodayViewController: UIViewController {
 
 extension TodayViewController: TodayViewProtocol {
     func configureView(with model: Welcome) {
-        bigImage.image = bigImage.donwload("\(model.list[0].weather[0].icon)")
+        bigImage.image = UIImage.donwload("\(model.list[0].weather[0].icon)")
+
+//        bigImage.image = bigImage.donwload("\(model.list[0].weather[0].icon)")
         placeLabel.text = "\(model.city.name), \(model.city.country)"
         temperatureLabel.text = "\(model.list[0].main.temp)°С | \(model.list[0].weather[0].weatherDescription)"
 

@@ -7,8 +7,8 @@
 
 import UIKit
 
-extension UIImageView {
-    func donwload(_ url: String) -> UIImage? {
+extension UIImage {
+    static func donwload(_ url: String) -> UIImage? {
         guard let fullURL = URL(string: "https://openweathermap.org/img/wn/\(url).png") else {
             return nil
         }

@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BD35E70A-0D58-4F61-894F-3B354F037B14"
+            uuid = "90BAE2BA-B5A8-462E-A941-8C71BD9BF895"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WeatherApp/Presenter/TodayPresenter.swift"
+            filePath = "WeatherApp/View/ForecastViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "get(_:)"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "configureView(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

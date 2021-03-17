@@ -9,6 +9,15 @@ import UIKit
 
 class ForecastViewController: UIViewController {
 
+    struct ForTable {
+        var image: UIImage
+        var time: String
+        var description: String
+        var temperature: String
+    }
+    
+    var tempModel = [ForTable]()
+
     //MARK: GUI Variables
     private let headerLabel: UILabel = {
         let label = UILabel()
@@ -73,13 +82,17 @@ class ForecastViewController: UIViewController {
 
 extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        tempModel.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as? CustomTableViewCell else {
             fatalError("custom cell not found")
         }
+        cell.configure(with: tempModel[indexPath.row].image,
+                       time: tempModel[indexPath.row].time,
+                       description: tempModel[indexPath.row].description,
+                       temperature: tempModel[indexPath.row].temperature)
 
         cell.selectionStyle = .none
         return cell
@@ -91,6 +104,31 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ForecastViewController: ForecastViewProtocol {
+    func configureView(with model: Welcome) {
 
+        //MARK: - Создать свой массив картинок
+        var weatherImages = [UIImage]()
+        for element in 0...39 {
+            let myImage = UIImage.donwload("\(model.list[element].weather[0].icon)") ?? UIImage(systemName: "sun.max")
+            weatherImages.append(myImage!)
+        }
+
+        //MARK: - Передать нужные данные из model в свою конструкцию
+        for element in 0...39 {
+            tempModel.append(ForTable(image: weatherImages[element],
+                                time: "\(Date())",
+                                description: "\(model.list[element].weather[0].weatherDescription)",
+                                temperature: "\(model.list[element].main.temp)"))
+        }
+
+        //MARK: - Из своей конструкции поочереди засетать каждую ячейку таблицы
+        //для этого сделать специальный конфигуратор
+        //подумать над датой
+
+        print(tempModel[2])
+
+        //MARK: - Обновить таблицу
+        table.reloadData()
+    }
 }
 
