@@ -93,7 +93,7 @@ class TodayViewController: UIViewController {
         var images = [UIImageView]()
         for _ in 0...4 {
             let imageView = UIImageView()
-            imageView.backgroundColor = .red
+            imageView.image?.withTintColor(.systemYellow)
             images.append(imageView)
         }
         return images
@@ -282,8 +282,20 @@ class TodayViewController: UIViewController {
 
 extension TodayViewController: TodayViewProtocol {
     func configureView(with model: Welcome) {
-        let url = URL(string: "https://openweathermap.org/img/wn/\(model.list[0].weather[0].icon).png")
-        let data = try? Data(contentsOf: url!)
-        bigImage.image = UIImage(data: data!)?.withTintColor(.systemYellow)
+        bigImage.image = bigImage.donwload("\(model.list[0].weather[0].icon)")
+        placeLabel.text = "\(model.city.name), \(model.city.country)"
+        temperatureLabel.text = "\(model.list[0].main.temp)°С | \(model.list[0].weather[0].weatherDescription)"
+
+        littleImages[0].image = UIImage(systemName: "cloud.rain")?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+        littleImages[1].image = UIImage(systemName: "drop")?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+        littleImages[2].image = UIImage(systemName: "lineweight")?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+        littleImages[3].image = UIImage(systemName: "wind")?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+        littleImages[4].image = UIImage(systemName: "circle")?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+
+        littleLabels[0].text = "\(model.list[0].main.humidity) %"
+        littleLabels[1].text = "\(model.list[0].rain?.the3H ?? 0) mm"
+        littleLabels[2].text = "\(model.list[0].main.pressure) hPa"
+        littleLabels[3].text = "\(model.list[0].wind.speed) km/h"
+        littleLabels[4].text = "\(model.list[0].wind.deg) °"
     }
 }

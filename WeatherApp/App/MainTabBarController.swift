@@ -49,10 +49,10 @@ class MainTabBar: UITabBarController, CLLocationManagerDelegate {
             return
         }
 
-        NetworkManager.shared.request(lat: lat, long: long, successHandler: { [weak self] (model: Welcome) in
+        NetworkManager.shared.request(lat: lat, long: long,
+                                      successHandler: { [weak self] (model: Welcome) in
 
             guard let self = self else { return }
-//            self.todayPresenter?.parsedModel = model
             self.todayPresenter?.view.configureView(with: model)
         },
         errorHandler: { (error: NetworkError) in

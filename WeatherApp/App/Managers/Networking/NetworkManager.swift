@@ -32,10 +32,11 @@ class NetworkManager {
                                      successHandler: @escaping (Generic) -> Void,
                                      errorHandler: @escaping (NetworkError) -> Void) {
 
-        guard let fullUrl = URL(string: "\(baseUrl)lat=\(lat)&lon=\(long)&appid=\(apiKey)") else {
+        guard let fullUrl = URL(string: "\(baseUrl)lat=\(lat)&lon=\(long)&units=metric&appid=\(apiKey)") else {
             errorHandler(.incorrectUrl)
             return
         }
+        //print(fullUrl)
 
         let request = URLRequest(url: fullUrl)
         print(fullUrl)
