@@ -8,17 +8,17 @@
 import UIKit
 
 protocol Builder {
-    static func createTodayModule() -> UIViewController
+    static func createTodayModule() -> (UIViewController, TodayPresenter)
     static func createForecastModule() -> UIViewController
 }
 
 class ModuleBuilder: Builder {
 
-    static func createTodayModule() -> UIViewController {
+    static func createTodayModule() -> (UIViewController, TodayPresenter) {
         let view = TodayViewController()
         let presenter = TodayPresenter(view: view)
         view.presenter = presenter
-        return view
+        return (view, presenter)
     }
 
     static func createForecastModule() -> UIViewController {

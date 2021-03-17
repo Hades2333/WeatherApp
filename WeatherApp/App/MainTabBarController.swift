@@ -12,6 +12,7 @@ class MainTabBar: UITabBarController, CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
+    var todayPresenter: TodayPresenter?
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,6 +37,8 @@ class MainTabBar: UITabBarController, CLLocationManagerDelegate {
             currentLocation = locations.first
             locationManager.stopUpdatingLocation()
             requestWeatherForLocation()
+
+
             print("мои координаты \(String(describing: currentLocation?.coordinate.latitude)) \(String(describing: currentLocation?.coordinate.longitude))")
         }
     }
@@ -45,20 +48,24 @@ class MainTabBar: UITabBarController, CLLocationManagerDelegate {
               let long = currentLocation?.coordinate.longitude else {
             return
         }
-        //[weak self]
-        NetworkManager.shared.request(lat: lat, long: long, successHandler: { (model: Welcome) in
-            print("мой городок \(model.city)")
+
+        NetworkManager.shared.request(lat: lat, long: long, successHandler: { [weak self] (model: Welcome) in
+
+            guard let self = self else { return }
+//            self.todayPresenter?.parsedModel = model
+            self.todayPresenter?.view.configureView(with: model)
         },
         errorHandler: { (error: NetworkError) in
-            //self?.handleError(error: error)
-            //TodayPresenter.
+            Swift.debugPrint(error)
         })
 
     }
 
     //MARK: - Methods
     func setupVCs() {
-        let todayVC = ModuleBuilder.createTodayModule()
+        let todayResult = ModuleBuilder.createTodayModule()
+        let todayVC = todayResult.0
+        todayPresenter = todayResult.1
         todayVC.tabBarItem = UITabBarItem(title: "Today",
                                           image: UIImage(systemName: "sun.max"),
                                           selectedImage: UIImage(systemName: "sun.max.fill"))

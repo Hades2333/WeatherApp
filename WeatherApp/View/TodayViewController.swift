@@ -281,5 +281,9 @@ class TodayViewController: UIViewController {
 }
 
 extension TodayViewController: TodayViewProtocol {
-
+    func configureView(with model: Welcome) {
+        let url = URL(string: "https://openweathermap.org/img/wn/\(model.list[0].weather[0].icon).png")
+        let data = try? Data(contentsOf: url!)
+        bigImage.image = UIImage(data: data!)?.withTintColor(.systemYellow)
+    }
 }
