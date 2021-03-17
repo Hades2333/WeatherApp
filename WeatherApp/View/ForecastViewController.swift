@@ -119,6 +119,7 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
 
+        let extra = calculateNumberOfRowPerSection()
         switch indexPath.section {
         case 0:
             cell.configure(with: tempModel[indexPath.row].image,
@@ -127,42 +128,42 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
                            temperature: tempModel[indexPath.row].temperature)
             return cell
         case 1:
-            let extraRows = calculateNumberOfRowPerSection()[0]
+            let extraRows = extra[0]
             cell.configure(with: tempModel[indexPath.row+extraRows].image,
                            time: String.convert(date: tempModel[indexPath.row+extraRows].time),
                            description: tempModel[indexPath.row+extraRows].description,
                            temperature: tempModel[indexPath.row+extraRows].temperature)
             return cell
         case 2:
-            let extraRows = calculateNumberOfRowPerSection()[1] + calculateNumberOfRowPerSection()[0]
+            let extraRows = extra[1] + extra[0]
             cell.configure(with: tempModel[indexPath.row+extraRows].image,
                            time: String.convert(date: tempModel[indexPath.row+extraRows].time),
                            description: tempModel[indexPath.row+extraRows].description,
                            temperature: tempModel[indexPath.row+extraRows].temperature)
             return cell
         case 3:
-            let extraRows = calculateNumberOfRowPerSection()[2] + calculateNumberOfRowPerSection()[1] + calculateNumberOfRowPerSection()[0]
+            let extraRows = extra[2] + extra[1] + extra[0]
             cell.configure(with: tempModel[indexPath.row+extraRows].image,
                            time: String.convert(date: tempModel[indexPath.row+extraRows].time),
                            description: tempModel[indexPath.row+extraRows].description,
                            temperature: tempModel[indexPath.row+extraRows].temperature)
             return cell
         case 4:
-            let extraRows = calculateNumberOfRowPerSection()[3] + calculateNumberOfRowPerSection()[2] + calculateNumberOfRowPerSection()[1] + calculateNumberOfRowPerSection()[0]
+            let extraRows = extra[3] + extra[2] + extra[1] + extra[0]
             cell.configure(with: tempModel[indexPath.row+extraRows].image,
                            time: String.convert(date: tempModel[indexPath.row+extraRows].time),
                            description: tempModel[indexPath.row+extraRows].description,
                            temperature: tempModel[indexPath.row+extraRows].temperature)
             return cell
         case 5:
-            let extraRows = calculateNumberOfRowPerSection()[4] + calculateNumberOfRowPerSection()[3] + calculateNumberOfRowPerSection()[2] + calculateNumberOfRowPerSection()[1] + calculateNumberOfRowPerSection()[0]
+            let extraRows = extra[4] + extra[3] + extra[2] + extra[1] + extra[0]
             cell.configure(with: tempModel[indexPath.row+extraRows].image,
                            time: String.convert(date: tempModel[indexPath.row+extraRows].time),
                            description: tempModel[indexPath.row+extraRows].description,
                            temperature: tempModel[indexPath.row+extraRows].temperature)
             return cell
         case 6:
-            let extraRows = calculateNumberOfRowPerSection()[5] + calculateNumberOfRowPerSection()[4] + calculateNumberOfRowPerSection()[3] + calculateNumberOfRowPerSection()[2] + calculateNumberOfRowPerSection()[1] + calculateNumberOfRowPerSection()[0]
+            let extraRows = extra[5] + extra[4] + extra[3] + extra[2] + extra[1] + extra[0]
             cell.configure(with: tempModel[indexPath.row+extraRows].image,
                            time: String.convert(date: tempModel[indexPath.row+extraRows].time),
                            description: tempModel[indexPath.row+extraRows].description,
@@ -175,31 +176,6 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
                            temperature: tempModel[indexPath.row].temperature)
             return cell
         }
-
-
-
-
-//        if indexPath.section == 0 {
-//            cell.configure(with: tempModel[indexPath.row].image,
-//                           time: String.convert(date: tempModel[indexPath.row].time),
-//                           description: tempModel[indexPath.row].description,
-//                           temperature: tempModel[indexPath.row].temperature)
-//            return cell
-//        }
-//        if indexPath.section == 1 {
-//            let extraRows = calculateNumberOfRowPerSection()[0]
-//        cell.configure(with: tempModel[indexPath.row+extraRows].image,
-//                       time: String.convert(date: tempModel[indexPath.row+extraRows].time),
-//                       description: tempModel[indexPath.row+extraRows].description,
-//                       temperature: tempModel[indexPath.row+extraRows].temperature)
-//            return cell
-//        }
-//        cell.configure(with: tempModel[indexPath.row].image,
-//                       time: String.convert(date: tempModel[indexPath.row].time),
-//                       description: tempModel[indexPath.row].description,
-//                       temperature: tempModel[indexPath.row].temperature)
-//        cell.selectionStyle = .none
-//        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -253,6 +229,29 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return array
     }
+
+//    func calculateNumberOfLastRows(in section: Int) -> Int {
+//        var array = [Int]()
+//
+//        var number = 0
+//        var comparableDay = String.convertToDay(date: tempModel[0].time)
+//        while array.count < section {
+//            for element in 0...39 {
+//                let currentDay = String.convertToDay(date: tempModel[element].time)
+//                if element == 39, number != 0, currentDay == comparableDay {
+//                    number += 1
+//                    array.append(number)
+//                } else if currentDay == comparableDay {
+//                    number += 1
+//                } else {
+//                    array.append(number)
+//                    number = 1
+//                    comparableDay = currentDay
+//                }
+//            }
+//        }
+//        return number
+//    }
 }
 
 extension ForecastViewController: ForecastViewProtocol {
