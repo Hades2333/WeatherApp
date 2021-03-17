@@ -106,17 +106,18 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
 extension ForecastViewController: ForecastViewProtocol {
     func configureView(with model: Welcome) {
 
-        //MARK: - Создать свой массив картинок
+        self.headerLabel.text = "\(model.city.name)"
+
         var weatherImages = [UIImage]()
         for element in 0...39 {
             let myImage = UIImage.donwload("\(model.list[element].weather[0].icon)") ?? UIImage(systemName: "sun.max")
             weatherImages.append(myImage!)
         }
 
-        //MARK: - Передать нужные данные из model в свою конструкцию
         for element in 0...39 {
+
             tempModel.append(ForTable(image: weatherImages[element],
-                                time: "\(Date())",
+                                      time: String.convert(date: model.list[element].dtTxt),
                                 description: "\(model.list[element].weather[0].weatherDescription)",
                                 temperature: "\(model.list[element].main.temp)"))
         }
@@ -125,9 +126,7 @@ extension ForecastViewController: ForecastViewProtocol {
         //для этого сделать специальный конфигуратор
         //подумать над датой
 
-        print(tempModel[2])
-
-        //MARK: - Обновить таблицу
+        //MARK: - Reload
         table.reloadData()
     }
 }

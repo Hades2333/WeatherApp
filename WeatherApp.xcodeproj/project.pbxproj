@@ -24,6 +24,7 @@
 		140075F22600F04600842D93 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075F12600F04600842D93 /* NetworkManager.swift */; };
 		140075F92600F5E500842D93 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140075F82600F5E500842D93 /* NetworkError.swift */; };
 		142C7B792601E03E002A285B /* UIImageView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142C7B782601E03E002A285B /* UIImageView+Ex.swift */; };
+		142C7B8326023257002A285B /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142C7B8226023257002A285B /* String+Ex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		140075F12600F04600842D93 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		140075F82600F5E500842D93 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		142C7B782601E03E002A285B /* UIImageView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ex.swift"; sourceTree = "<group>"; };
+		142C7B8226023257002A285B /* String+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				140075C326008BD700842D93 /* UIView+Ex.swift */,
 				140075C626008BF100842D93 /* UIStackView+Ex.swift */,
 				142C7B782601E03E002A285B /* UIImageView+Ex.swift */,
+				142C7B8226023257002A285B /* String+Ex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				140075D726008CFD00842D93 /* TodayViewController.swift in Sources */,
 				140075F22600F04600842D93 /* NetworkManager.swift in Sources */,
 				140075DE26008DB900842D93 /* ModuleBuilder.swift in Sources */,
+				142C7B8326023257002A285B /* String+Ex.swift in Sources */,
 				140075A52600889D00842D93 /* AppDelegate.swift in Sources */,
 				140075EE2600B68300842D93 /* CustomTableViewCell.swift in Sources */,
 				140075D026008CA100842D93 /* WeatherModel.swift in Sources */,

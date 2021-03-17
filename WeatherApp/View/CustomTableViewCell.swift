@@ -39,7 +39,7 @@ class CustomTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .systemBlue
-        label.font = .boldSystemFont(ofSize: 40)
+        label.font = .boldSystemFont(ofSize: 20)
         label.text = "23°"
         return label
     }()
@@ -96,6 +96,6 @@ class CustomTableViewCell: UITableViewCell {
         self.weatherImage.image = image
         self.timeLabel.text = time
         self.conditionLabel.text = description
-        self.temperatureLabel.text = temperature
+        self.temperatureLabel.text = "\(temperature)°"
     }
 }
