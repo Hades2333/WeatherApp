@@ -11,16 +11,14 @@ protocol ForecastViewProtocol: class {
 }
 
 protocol ForecastViewPresenterProtocol: class {
-    init(view: ForecastViewProtocol, model: WeatherModel)
+    init(view: ForecastViewProtocol)
 }
 
 class ForecastPresenter: ForecastViewPresenterProtocol {
 
     let view: ForecastViewProtocol
-    let model: WeatherModel
 
-    required init(view: ForecastViewProtocol, model: WeatherModel) {
+    required init(view: ForecastViewProtocol) {
         self.view = view
-        self.model = model
     }
 }

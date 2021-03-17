@@ -14,20 +14,16 @@ protocol Builder {
 
 class ModuleBuilder: Builder {
 
-    static let myModel = WeatherModel()
-
     static func createTodayModule() -> UIViewController {
-        let model = myModel
         let view = TodayViewController()
-        let presenter = TodayPresenter(view: view, model: model)
+        let presenter = TodayPresenter(view: view)
         view.presenter = presenter
         return view
     }
 
     static func createForecastModule() -> UIViewController {
-        let model = myModel
         let view = ForecastViewController()
-        let presenter = ForecastPresenter(view: view, model: model)
+        let presenter = ForecastPresenter(view: view)
         view.presenter = presenter
         return view
     }

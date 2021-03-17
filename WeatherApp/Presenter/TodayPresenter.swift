@@ -12,17 +12,15 @@ protocol TodayViewProtocol: class {
 }
 
 protocol TodayViewPresenterProtocol: class {
-    init(view: TodayViewProtocol, model: WeatherModel)
+    init(view: TodayViewProtocol)
 
 }
 
 class TodayPresenter: TodayViewPresenterProtocol {
 
     let view: TodayViewProtocol
-    let model: WeatherModel
 
-    required init(view: TodayViewProtocol, model: WeatherModel) {
+    required init(view: TodayViewProtocol) {
         self.view = view
-        self.model = model
     }
 }

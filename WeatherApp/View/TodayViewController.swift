@@ -277,8 +277,6 @@ class TodayViewController: UIViewController {
             make.bottom.equalTo(topStack.snp.bottom).inset(50)
             make.width.equalTo(topStack)
         }
-
-
     }
 }
 
