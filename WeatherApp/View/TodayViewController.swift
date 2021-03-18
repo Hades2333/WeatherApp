@@ -10,6 +10,10 @@ import SnapKit
 
 class TodayViewController: UIViewController {
 
+    //MARK: - Properties
+    var presenter: TodayViewPresenterProtocol!
+    var textModel: Welcome?
+
     //MARK: GUI Variables
     private let headerLabel: UILabel = {
         let label = UILabel()
@@ -108,10 +112,13 @@ class TodayViewController: UIViewController {
         return labels
     }()
 
-    private let shareButton: UIButton = {
+    private lazy var shareButton: UIButton = {
         let button = UIButton()
         button.setTitle("Share", for: .normal)
         button.setTitleColor(.orange, for: .normal)
+        button.addTarget(self,
+                         action: #selector(shareTapped),
+                         for: .touchUpInside)
         return button
     }()
 
@@ -156,12 +163,36 @@ class TodayViewController: UIViewController {
         return views
     }()
 
-    var presenter: TodayViewPresenterProtocol!
-
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         initViews()
+    }
+
+    //MARK: - Methods
+    @objc func shareTapped() {
+        guard let model = textModel else {
+            let alert = UIAlertController(title: "Weather info",
+                                          message: "nothing to show",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true)
+            return
+        }
+        let myMessage: String =
+        """
+        You are situated in \(model.city.name), \(model.city.country)
+        Today is \(String.convertToDay(date: model.list[0].dtTxt)).
+        Mostly \(model.list[0].weather[0].main) and the temperature is \(model.list[0].main.temp) degrees.
+        Wind speed is \(model.list[0].wind.speed) km/h. Wind angle is \(model.list[0].wind.deg) °.
+        Humidity \(model.list[0].main.humidity) % and pressure is \(model.list[0].main.pressure) hPa.
+        """
+        let alert = UIAlertController(title: "Weather info",
+                                      message: myMessage,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
     }
 
     private func initViews() {
@@ -179,7 +210,7 @@ class TodayViewController: UIViewController {
 
         for element in 0...4 {
             verticalStackWithImageAndLabel[element].addArrangedSubviews([littleImages[element],
-                                                                 littleLabels[element]])
+                                                                         littleLabels[element]])
         }
 
         makeConstraints()
@@ -257,8 +288,8 @@ class TodayViewController: UIViewController {
             make.centerX.equalTo(topStack)
             make.width.height.equalTo(topStack.snp.height).multipliedBy(0.5)
         }
-        stackForOnline.snp.makeConstraints { make in
 
+        stackForOnline.snp.makeConstraints { make in
             make.top.equalTo(bigImage.snp.bottom).offset(myOffset)
             make.height.equalTo(myOffset*4)
         }
@@ -279,11 +310,15 @@ class TodayViewController: UIViewController {
     }
 }
 
+//MARK: - TodayViewProtocol
 extension TodayViewController: TodayViewProtocol {
+    func sendData(with model: Welcome) {
+        self.textModel = model
+    }
+
     func configureView(with model: Welcome) {
         bigImage.image = UIImage.donwload("\(model.list[0].weather[0].icon)")
 
-//        bigImage.image = bigImage.donwload("\(model.list[0].weather[0].icon)")
         placeLabel.text = "\(model.city.name), \(model.city.country)"
         temperatureLabel.text = "\(model.list[0].main.temp)°С | \(model.list[0].weather[0].weatherDescription)"
 

@@ -8,7 +8,8 @@
 import UIKit
 
 class ForecastViewController: UIViewController {
-
+    
+    //MARK: - Struct
     struct ForTable {
         var image: UIImage
         var time: String
@@ -16,8 +17,10 @@ class ForecastViewController: UIViewController {
         var temperature: String
     }
     
+    //MARK: - Properties
     var tempModel = [ForTable]()
-
+    var presenter: ForecastViewPresenterProtocol!
+    
     //MARK: GUI Variables
     private let headerLabel: UILabel = {
         let label = UILabel()
@@ -25,14 +28,14 @@ class ForecastViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-
+    
     private let colorLine: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "rainbow")
         view.contentMode = .scaleToFill
         return view
     }()
-
+    
     private let table: UITableView = {
         let table = UITableView()
         table.backgroundColor = .secondarySystemBackground
@@ -40,38 +43,38 @@ class ForecastViewController: UIViewController {
                        forCellReuseIdentifier: CustomTableViewCell.identifier)
         return table
     }()
-
-    var presenter: ForecastViewPresenterProtocol!
-
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .secondarySystemBackground
         initViews()
         configureTableView()
     }
-
+    
+    //MARK: - Methods
     private func configureTableView() {
         table.dataSource = self
         table.delegate = self
     }
-
+    
     private func initViews() {
         view.addSubviews([headerLabel, colorLine, table])
         makeConstraints()
     }
-
+    
     private func makeConstraints() {
         headerLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             make.left.right.equalToSuperview()
         }
-
+        
         colorLine.snp.makeConstraints { make in
             make.top.equalTo(headerLabel.snp.bottom).offset(10)
             make.left.right.equalToSuperview()
             make.height.equalTo(4)
         }
-
+        
         table.snp.makeConstraints { make in
             make.top.equalTo(colorLine.snp.bottom)
             make.left.right.equalToSuperview()
@@ -80,8 +83,9 @@ class ForecastViewController: UIViewController {
     }
 }
 
+//MARK: - UITableViewDataSource and UITableViewDelegate
 extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard !tempModel.isEmpty else {
             return ""
@@ -92,7 +96,7 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
             return calculateHeaders()[section]
         }
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         guard !tempModel.isEmpty else {
             return 0
@@ -104,21 +108,18 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
         guard !tempModel.isEmpty else {
             return 0
         }
-//        let first = calculateNumberOfRowPerSection().reduce(0, +)
-//        let second = tempModel.count
-//        print(first, second)
         return calculateNumberOfRowPerSection()[section]
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as? CustomTableViewCell else {
             fatalError("custom cell not found")
         }
-
+        
         guard !tempModel.isEmpty else {
             return UITableViewCell()
         }
-
+        
         let extra = calculateNumberOfRowPerSection()
         switch indexPath.section {
         case 0:
@@ -177,11 +178,11 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         return
     }
-
+    
     func countSections() -> Int {
         var number = 1
         var date = String.convertToDay(date: tempModel[0].time)
@@ -195,11 +196,11 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return number
     }
-
+    
     func calculateHeaders() -> [String] {
         var array = [String]()
         array.append(String.convertToDay(date: tempModel[0].time))
-
+        
         for element in 0...39 {
             let day = String.convertToDay(date: tempModel[element].time)
             if !array.contains(day) {
@@ -208,10 +209,10 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return array
     }
-
+    
     func calculateNumberOfRowPerSection() -> [Int] {
         var array = [Int]()
-
+        
         var number = 0
         var comparableDay = String.convertToDay(date: tempModel[0].time)
         for element in 0...39 {
@@ -229,42 +230,20 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return array
     }
-
-//    func calculateNumberOfLastRows(in section: Int) -> Int {
-//        var array = [Int]()
-//
-//        var number = 0
-//        var comparableDay = String.convertToDay(date: tempModel[0].time)
-//        while array.count < section {
-//            for element in 0...39 {
-//                let currentDay = String.convertToDay(date: tempModel[element].time)
-//                if element == 39, number != 0, currentDay == comparableDay {
-//                    number += 1
-//                    array.append(number)
-//                } else if currentDay == comparableDay {
-//                    number += 1
-//                } else {
-//                    array.append(number)
-//                    number = 1
-//                    comparableDay = currentDay
-//                }
-//            }
-//        }
-//        return number
-//    }
 }
 
+//MARK: - ForecastViewProtocol
 extension ForecastViewController: ForecastViewProtocol {
     func configureView(with model: Welcome) {
-
+        
         self.headerLabel.text = "\(model.city.name)"
-
+        
         var weatherImages = [UIImage]()
         for element in 0...39 {
             let myImage = UIImage.donwload("\(model.list[element].weather[0].icon)") ?? UIImage(systemName: "sun.max")
             weatherImages.append(myImage!)
         }
-
+        
         for element in 0...39 {
             tempModel.append(ForTable(image: weatherImages[element],
                                       time: model.list[element].dtTxt,

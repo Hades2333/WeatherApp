@@ -15,12 +15,10 @@ class NetworkManager {
 
     // MARK: - Variables
     private let baseUrl: String = "https://api.openweathermap.org/data/2.5/forecast?"
-
     private let apiKey: String = "6b874494c7d6dcf106922ff8f8605c98"
-
     private lazy var session = URLSession(configuration: .default)
 
-    // MARK: - Init
+    // MARK: - Initialization
     private init() {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 60
@@ -69,7 +67,6 @@ class NetworkManager {
                         errorHandler(.serverError(statusCode: response.statusCode))
                     }
                 default:
-                    // Handle every unknown error
                     DispatchQueue.main.async {
                         errorHandler(.unknown)
                     }

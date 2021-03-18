@@ -9,6 +9,7 @@ import Foundation
 
 protocol TodayViewProtocol: class {
     func configureView(with model: Welcome)
+    func sendData(with model: Welcome)
 }
 
 protocol TodayViewPresenterProtocol: class {

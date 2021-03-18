@@ -19,10 +19,6 @@ class MainTabBar: UITabBarController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVCs()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         setupLocation()
     }
 
@@ -34,9 +30,8 @@ class MainTabBar: UITabBarController, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if !locations.isEmpty, currentLocation == nil {
+        if !locations.isEmpty {
             currentLocation = locations.first
-            locationManager.stopUpdatingLocation()
             requestWeatherForLocation()
         }
     }
@@ -52,10 +47,11 @@ class MainTabBar: UITabBarController, CLLocationManagerDelegate {
                                         
                                         guard let self = self else { return }
                                         self.todayPresenter?.view.configureView(with: model)
+                                        self.todayPresenter?.view.sendData(with: model)
                                         self.forecastPresenter?.view.configureView(with: model)
                                       },
                                       errorHandler: { (error: NetworkError) in
-                                        Swift.debugPrint(error)
+                                        fatalError(error.localizedDescription)
                                       })
     }
 

@@ -20,7 +20,7 @@ extension String {
             return ""
         }
         
-        dateFormatter.dateFormat = "HH:mm"///this is what you want to convert format
+        dateFormatter.dateFormat = "HH:mm"
         dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
         let timeStamp = dateFormatter.string(from: convertedDate!)
         
