@@ -131,14 +131,12 @@ class TodayViewController: UIViewController {
 
     private let placeLabel: UILabel = {
         let label = UILabel()
-        label.text = "London, UK"
         label.textAlignment = .center
         return label
     }()
 
     private let temperatureLabel: UILabel = {
         let label = UILabel()
-        label.text = "22°С | Sunny"
         label.textColor = .systemBlue
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
